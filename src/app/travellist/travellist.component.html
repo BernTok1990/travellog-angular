@@ -1,0 +1,38 @@
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <!-- Id Column -->
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef> Travel Id </mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{ row.id }} </mat-cell>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{ row.name }} </mat-cell>
+  </ng-container>
+
+  <!-- Itinerary Column -->
+  <ng-container matColumnDef="itinerary">
+    <mat-header-cell *matHeaderCellDef> Itinerary </mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{ row.itinerary }} </mat-cell>
+  </ng-container>
+  
+  <!-- View Flights / Edit Travel / Delete Travel Column -->
+  <ng-container matColumnDef="action">
+    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+    <mat-cell *matCellDef="let row">
+        <button mat-icon-button color="primary" (click)="loadFlights(row.id)">
+            <mat-icon>assignment</mat-icon>
+        </button>
+        <button mat-icon-button color="primary" (click)="editTravel(row)">
+            <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="deleteTravel(row.id)">
+            <mat-icon>delete</mat-icon>
+        </button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>
