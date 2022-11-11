@@ -15,7 +15,12 @@ import { TravelformComponent } from '../travelform/travelform.component';
   styleUrls: ['./travellist.component.scss'],
 })
 export class TravellistComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'name', 'itinerary', 'action'];
+  displayedColumns: string[] = [
+    // 'id', 
+    'name', 
+    'itinerary', 
+    'action'
+  ];
   dataSource!: MatTableDataSource<any>;
 
   constructor(
@@ -50,7 +55,7 @@ export class TravellistComponent implements OnInit {
   }
 
   editTravel(row: any) {
-    localStorage.setItem("travelformStatus", "edit");
+    localStorage.setItem('travelformStatus', 'edit');
     this.dialog
       .open(TravelformComponent, {
         data: row,
@@ -62,20 +67,18 @@ export class TravellistComponent implements OnInit {
   }
 
   deleteTravel(id: number) {
-    this.travelService
-      .delete(Number(id))
-      .subscribe({
-        next: (res) => {
-          this.getUserTravels();
-        },
-        // error: (err) => {
-        //   alert(err.message);
-        // },
-      });
+    this.travelService.delete(Number(id)).subscribe({
+      next: (res) => {
+        this.getUserTravels();
+      },
+      // error: (err) => {
+      //   alert(err.message);
+      // },
+    });
   }
 
   loadFlights(id: number) {
     localStorage.setItem('currentTravel', id.toString());
-    this.router.navigate(['flight'])
+    this.router.navigate(['flight']);
   }
 }

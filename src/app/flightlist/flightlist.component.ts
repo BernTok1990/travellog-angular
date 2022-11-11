@@ -16,7 +16,7 @@ import { FlightformComponent } from '../flightform/flightform.component';
 })
 export class FlightlistComponent implements OnInit {
   displayedColumns: string[] = [
-    'id',
+    // 'id',
     'date',
     'source',
     'destination',
